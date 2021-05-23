@@ -10,7 +10,6 @@ from plotly.express import data
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
-import datetime
 
 # reading countries json file.
 with open('assets/data/countries.json', 'r') as f:
@@ -265,16 +264,7 @@ class AppData():
             self.dataframe_copy = self.dataframe_copy.loc[(
                 self.dataframe_copy['iso_alpha'].isin(selected_countries))]
 
-    def get_states_data(self):
-        deaths = self.dataframe_copy.groupby(
-            ['country_name'])['fatality_count'].sum()
-        countries_df = pd.concat(deaths, axis=1)
-        return countries_df
-
     def get_years_timeline(self):
-        """
-        returning accident and fatals years timeline.
-        """
         timeline_df = pd.DataFrame()
         timeline_df['Total_Events_Occured'] = self.dataframe_copy['year'].value_counts()
         timeline_df['Deaths'] = self.dataframe_copy.groupby(['year'])[
@@ -282,11 +272,3 @@ class AppData():
         timeline_df['Injuries'] = self.dataframe_copy.groupby('year')[
             'injury_count'].sum()
         return timeline_df
-
-    @staticmethod
-    def read_data(file, extension, sheet_name=0):
-        a_df = pd.DataFrame()
-        path = "./assets/data/" + file + extension
-        temp_df = pd.read_excel(path, sheet_name=sheet_name)
-        a_df = a_df.append(temp_df, ignore_index=True)
-        return a_df
