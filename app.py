@@ -124,7 +124,7 @@ def render_layout(pathname):
                 html.Div(id='card-3', children=[
                     dbc.Row(
                         id='country_sort_list',
-                        children=sort_country.get_sorting_options_dropdown('country_name'), style={
+                        children=sort_country.get_sorting_options_dropdown('fatality_count'), style={
                             'margin-bottom': '5px'
                         }),
                     html.Div(id="list-component", children=[

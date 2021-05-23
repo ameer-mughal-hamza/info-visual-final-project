@@ -21,7 +21,7 @@ class SortCountryList:
                         ({'label': str(k), 'value': str(v)})
                         for k, v in sorting_options.items()
                     ],
-                    placeholder="Select a category...",
+                    placeholder="Select sort option...",
                     searchable=True,
                     clearable=True,
                     value=sort_country_list_value,
