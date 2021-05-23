@@ -1,0 +1,27 @@
+# Requirements txt file Github link
+https://github.com/plotly/dash-docs/blob/master/requirements.txt
+
+# Run requirements.txt file using pip
+pip3 install -r requirements.txt
+pip install -r requirements.txt
+
+# Plotly resource to add custom css and js in plotly app to override default behavior of plotly
+https://dash.plotly.com/external-resources
+
+#To select rows whose column value is in an iterable array, which we'll define as array, you can use isin:
+array = ['yellow', 'green']
+df.loc[df['favorite_color'].isin(array)]
+
+#To select rows whose column value equals a scalar, some_value, use ==:
+df.loc[df['favorite_color'] == 'yellow']
+
+#To select a row based on multiple conditions you can use &:
+array = ['yellow', 'green']
+df.loc[(df['age'] == 21) & df['favorite_color'].isin(array)]
+
+#To select rows where a column value does not equal a value, use !=:
+df.loc[df['favorite_color'] != 'yellow']
+
+#To return a rows where column value is not in an iterable array, use ~ in front of df:
+array = ['yellow', 'green']
+df.loc[~df['favorite_color'].isin(array)]
